@@ -1,7 +1,8 @@
-package com.erikkramli.androidexamples.main.di;
+package com.erikkramli.androidexamples.main.infrastructure;
 
-import com.erikkramli.androidexamples.application.di.ApplicationComponent;
+import com.erikkramli.androidexamples.application.infrastructure.ApplicationComponent;
 import com.erikkramli.androidexamples.infrastructure.ActivityScope;
+import com.erikkramli.androidexamples.infrastructure.DependencyGraph;
 import com.erikkramli.androidexamples.infrastructure.DiComponent;
 import com.erikkramli.androidexamples.main.MainActivity;
 
@@ -16,9 +17,11 @@ public interface MainComponent extends DiComponent<MainActivity> {
     final class IoC {
         public static void satisfy(MainActivity activity) {
             DaggerMainComponent.builder()
-                    .applicationComponent(ApplicationComponent.IoC.getApplicationComponent())
+                    .applicationComponent(DependencyGraph.getApplicationComponent())
                     .build()
                     .satisfy(activity);
         }
+
+        private IoC() {}
     }
 }

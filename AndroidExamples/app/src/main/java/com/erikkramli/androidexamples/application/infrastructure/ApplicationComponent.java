@@ -1,6 +1,7 @@
-package com.erikkramli.androidexamples.application.di;
+package com.erikkramli.androidexamples.application.infrastructure;
 
 import com.erikkramli.androidexamples.application.ExampleApplication;
+import com.erikkramli.androidexamples.infrastructure.DependencyGraph;
 import com.erikkramli.androidexamples.infrastructure.DiComponent;
 
 import javax.inject.Singleton;
@@ -15,17 +16,14 @@ public interface ApplicationComponent extends DiComponent<ExampleApplication> {
 
     final class IoC {
 
-        private static ApplicationComponent applicationComponent;
-
         public static void satisfy(ExampleApplication application) {
-            ApplicationComponent applicationComponent = DaggerApplicationComponent.builder()
+            ApplicationComponent component = DaggerApplicationComponent.builder()
                     .applicationModule(new ApplicationModule(application))
                     .build();
-            applicationComponent.satisfy(application);
+            DependencyGraph.setApplicationComponent(component);
+            component.satisfy(application);
         }
 
-        public static ApplicationComponent getApplicationComponent() {
-            return applicationComponent;
-        }
+        private IoC() {}
     }
 }

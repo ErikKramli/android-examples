@@ -1,4 +1,4 @@
-package com.erikkramli.androidexamples.application.di;
+package com.erikkramli.androidexamples.application.infrastructure;
 
 import android.content.Context;
 import android.content.res.Resources;
