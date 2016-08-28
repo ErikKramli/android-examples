@@ -22,11 +22,15 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:24.2.0'
-
     // dagger 2
     compile 'com.google.dagger:dagger:2.6.1'
     apt 'com.google.dagger:dagger-compiler:2.6.1'
 
+    // retrofit 2
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
     // test
     testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
 }
