@@ -2,6 +2,7 @@ package com.erikkramli.androidexamples.api;
 
 import com.erikkramli.androidexamples.api.exception.ApiException;
 import com.erikkramli.androidexamples.api.exception.NoContentException;
+import com.erikkramli.androidexamples.api.model.StarShip;
 import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 
 import org.junit.Rule;
@@ -51,5 +52,21 @@ public class StarWarsRepositoryTest {
         expectedExceptionRuler.expect(NoContentException.class);
         expectedExceptionRuler.expectMessage("No content at page " + page);
         repository.getCharacters(page);
+    }
+
+    @Test
+    public void When_getStarShips_invoked_Then_valid_response_received() throws ApiException {
+        List<StarShip> characters = repository.getStarShips(1);
+
+        assertThat(characters, notNullValue());
+        assertThat(characters.size(), greaterThanOrEqualTo(0));
+    }
+
+    @Test
+    public void When_getStarShips_invoked_With_invalid_param_Then_ApiException_thrown() throws ApiException {
+        int page = -1;
+        expectedExceptionRuler.expect(NoContentException.class);
+        expectedExceptionRuler.expectMessage("No content at page " + page);
+        repository.getStarShips(page);
     }
 }
