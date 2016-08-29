@@ -1,6 +1,7 @@
 package com.erikkramli.androidexamples.api;
 
 import com.erikkramli.androidexamples.api.exception.ApiException;
+import com.erikkramli.androidexamples.api.exception.NoContentException;
 import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 
 import org.junit.Rule;
@@ -47,7 +48,7 @@ public class StarWarsRepositoryTest {
     @Test
     public void When_getCharacters_invoked_With_invalid_param_Then_ApiException_thrown() throws ApiException {
         int page = 0;
-        expectedExceptionRuler.expect(ApiException.class);
+        expectedExceptionRuler.expect(NoContentException.class);
         expectedExceptionRuler.expectMessage("No content at page " + page);
         repository.getCharacters(page);
     }

@@ -4,9 +4,9 @@ import com.erikkramli.androidexamples.api.json.CharacterJson;
 
 public final class StarWarsCharacter {
 
-    private String name;
-    private String gender;
-    private String height;
+    private final String name;
+    private final String gender;
+    private final String height;
 
     public StarWarsCharacter(CharacterJson json) {
         this.name = json.getName();
