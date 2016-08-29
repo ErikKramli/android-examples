@@ -1,11 +1,11 @@
 package com.erikkramli.androidexamples.api;
 
 import com.erikkramli.androidexamples.api.exception.ApiException;
-import com.erikkramli.androidexamples.api.model.Character;
+import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 
 import java.util.List;
 
 public interface StarWarsRepository {
 
-    List<Character> getCharacters(int page) throws ApiException;
+    List<StarWarsCharacter> getCharacters(int page) throws ApiException;
 }

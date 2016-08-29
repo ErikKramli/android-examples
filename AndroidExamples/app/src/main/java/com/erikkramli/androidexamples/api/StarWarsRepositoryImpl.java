@@ -5,7 +5,7 @@ import android.util.Log;
 import com.erikkramli.androidexamples.api.exception.ApiException;
 import com.erikkramli.androidexamples.api.json.CharacterJson;
 import com.erikkramli.androidexamples.api.json.PeopleJson;
-import com.erikkramli.androidexamples.api.model.Character;
+import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,12 +27,16 @@ public class StarWarsRepositoryImpl implements StarWarsRepository {
     }
 
     @Override
-    public List<Character> getCharacters(int page) throws ApiException {
+    public List<StarWarsCharacter> getCharacters(int page) throws ApiException {
         PeopleJson peopleJson = execute(api.getPeople(page));
 
-        List<Character> characters = new ArrayList<>();
+        if (peopleJson == null)  {
+            throw new ApiException("No content at page " + page);
+        }
+
+        List<StarWarsCharacter> characters = new ArrayList<>();
         for (CharacterJson characterJson : peopleJson.getCharacters()) {
-            characters.add(new Character(characterJson));
+            characters.add(new StarWarsCharacter(characterJson));
         }
 
         return characters;
@@ -43,7 +47,7 @@ public class StarWarsRepositoryImpl implements StarWarsRepository {
             return retrofitCall.execute().body();
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
-            throw new ApiException("Error", e);
+            throw new ApiException("Network error", e);
         }
     }
 }
