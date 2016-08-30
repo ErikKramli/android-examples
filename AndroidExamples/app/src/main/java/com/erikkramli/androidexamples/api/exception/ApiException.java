@@ -1,6 +1,6 @@
 package com.erikkramli.androidexamples.api.exception;
 
-public final class ApiException extends Exception {
+public class ApiException extends Exception {
 
     public ApiException(String msg) {
         super(msg);
