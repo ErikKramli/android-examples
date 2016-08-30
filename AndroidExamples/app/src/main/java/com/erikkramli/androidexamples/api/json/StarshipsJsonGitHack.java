@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Collections;
 import java.util.List;
 
-public final class StarShipsJson {
+public final class StarshipsJsonGitHack {
 
     @SerializedName("count")
     private int count;
