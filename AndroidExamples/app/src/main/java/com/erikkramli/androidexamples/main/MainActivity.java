@@ -1,10 +1,12 @@
 package com.erikkramli.androidexamples.main;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.erikkramli.androidexamples.R;
 import com.erikkramli.androidexamples.main.infrastructure.MainComponent;
+import com.erikkramli.androidexamples.main.ui.MainActivityBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
         MainComponent.IoC.satisfy(this);
 
-        setContentView(R.layout.activity_main);
+        MainActivityBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        binding.text.setText("Hello");
     }
 }
