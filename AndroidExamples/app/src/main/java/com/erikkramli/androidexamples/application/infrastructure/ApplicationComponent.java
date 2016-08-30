@@ -1,6 +1,6 @@
 package com.erikkramli.androidexamples.application.infrastructure;
 
-import com.erikkramli.androidexamples.api.infrastructure.NetworkingComponent;
+import com.erikkramli.androidexamples.api.infrastructure.ApiComponent;
 import com.erikkramli.androidexamples.application.ExampleApplication;
 import com.erikkramli.androidexamples.infrastructure.DiComponent;
 
@@ -14,7 +14,7 @@ import dagger.Component;
 @Singleton
 public interface ApplicationComponent extends DiComponent<ExampleApplication> {
 
-    NetworkingComponent.Builder networkingComponentBuilder();
+    ApiComponent.Builder apiComponentBuilder();
 
     final class IoC {
 

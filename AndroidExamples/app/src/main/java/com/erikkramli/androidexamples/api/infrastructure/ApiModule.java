@@ -1,6 +1,8 @@
 package com.erikkramli.androidexamples.api.infrastructure;
 
 import com.erikkramli.androidexamples.api.StarWarsApi;
+import com.erikkramli.androidexamples.api.StarWarsRepository;
+import com.erikkramli.androidexamples.api.StarWarsRepositoryImpl;
 import com.erikkramli.androidexamples.infrastructure.NetworkingScope;
 
 import dagger.Module;
@@ -21,5 +23,11 @@ public class ApiModule {
                 .client(httpClient)
                 .build()
                 .create(StarWarsApi.class);
+    }
+
+    @Provides
+    @NetworkingScope
+    StarWarsRepository provideStarWarsRepository(StarWarsRepositoryImpl impl) {
+        return impl;
     }
 }

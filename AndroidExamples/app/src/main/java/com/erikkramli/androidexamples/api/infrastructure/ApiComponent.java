@@ -1,5 +1,6 @@
 package com.erikkramli.androidexamples.api.infrastructure;
 
+import com.erikkramli.androidexamples.api.StarWarsRepository;
 import com.erikkramli.androidexamples.infrastructure.NetworkingScope;
 
 import dagger.Subcomponent;
@@ -11,12 +12,14 @@ import dagger.Subcomponent;
         }
 )
 @NetworkingScope
-public interface NetworkingComponent {
+public interface ApiComponent {
+
+    StarWarsRepository starWarsRepository();
 
     @Subcomponent.Builder
     interface Builder {
         Builder apiModule(ApiModule module);
         Builder networkingModule(NetworkingModule module);
-        NetworkingComponent build();
+        ApiComponent build();
     }
 }
