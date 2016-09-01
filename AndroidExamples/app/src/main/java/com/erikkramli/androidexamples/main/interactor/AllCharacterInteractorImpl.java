@@ -27,12 +27,16 @@ public class AllCharacterInteractorImpl implements AllCharacterInteractor {
     public List<StarWarsCharacter> getAllStarWarsCharacter() {
         List<StarWarsCharacter> allCharacter = new ArrayList<>();
 
-        int page = 0;
+        int page = 1;
         ApiException noMoreContentException = null;
         while (noMoreContentException == null) {
             try {
                 List<StarWarsCharacter> characters = repository.getCharacters(page++);
                 allCharacter.addAll(characters);
+
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, e.getMessage());
+                break;
 
             } catch (NoContentException e) {
                 noMoreContentException = e;

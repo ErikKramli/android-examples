@@ -21,7 +21,8 @@ import retrofit2.Call;
 
 public class StarWarsRepositoryImpl implements StarWarsRepository {
 
-    private static final String NO_CONTENT_MSG = "No content at page %s";
+    private static final String ILLEGAL_PAGE_INDEX = "Illegal page index %s";
+    private static final String NO_CONTENT = "No content at page %s";
     private static final String TAG = StarWarsRepositoryImpl.class.getSimpleName();
 
     private final StarWarsApi api;
@@ -33,29 +34,31 @@ public class StarWarsRepositoryImpl implements StarWarsRepository {
 
     @Override
     public List<StarWarsCharacter> getCharacters(int page) throws ApiException {
+        validatePageOrThrow(page);
+
         PeopleJson peopleJson = execute(api.getPeople(page));
 
-        checkJsonOrThrow(peopleJson, page);
+        validateJsonOrThrow(peopleJson, page);
 
         List<StarWarsCharacter> characters = new ArrayList<>();
         for (CharacterJson characterJson : peopleJson.getCharacters()) {
             characters.add(new StarWarsCharacter(characterJson));
         }
-
         return characters;
     }
 
     @Override
-    public List<StarShip> getStarShips(int page) throws ApiException {
+    public List<StarShip> getStarShips(int page) throws IllegalArgumentException, ApiException {
+        validatePageOrThrow(page);
+
         StarShipsJson starShipsJson = execute(api.getStarShips(page));
 
-        checkJsonOrThrow(starShipsJson, page);
+        validateJsonOrThrow(starShipsJson, page);
 
         List<StarShip> starShips = new ArrayList<>();
         for (StarShipJson starShipJson : starShipsJson.getStarShips()) {
             starShips.add(new StarShip(starShipJson));
         }
-
         return starShips;
     }
 
@@ -68,9 +71,15 @@ public class StarWarsRepositoryImpl implements StarWarsRepository {
         }
     }
 
-    private void checkJsonOrThrow(Object json, int page) throws NoContentException {
+    private void validatePageOrThrow(int page) throws IllegalArgumentException {
+        if (page < 1) {
+            throw new IllegalArgumentException(String.format(ILLEGAL_PAGE_INDEX, page));
+        }
+    }
+
+    private void validateJsonOrThrow(Object json, int page) throws NoContentException {
         if (json == null)  {
-            throw new NoContentException(String.format(NO_CONTENT_MSG, page));
+            throw new NoContentException(String.format(NO_CONTENT, page));
         }
     }
 }

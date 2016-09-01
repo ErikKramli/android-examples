@@ -47,8 +47,16 @@ public class StarWarsRepositoryTest {
     }
 
     @Test
-    public void When_getCharacters_invoked_With_invalid_param_Then_ApiException_thrown() throws ApiException {
+    public void When_getCharacters_invoked_With_invalid_page_index_Then_ApiException_thrown() throws ApiException {
         int page = 0;
+        expectedExceptionRuler.expect(IllegalArgumentException.class);
+        expectedExceptionRuler.expectMessage("Illegal page index " + page);
+        repository.getCharacters(page);
+    }
+
+    @Test
+    public void When_getCharacters_invoked_With_too_high_page_index_Then_ApiException_thrown() throws ApiException {
+        int page = 1101310;
         expectedExceptionRuler.expect(NoContentException.class);
         expectedExceptionRuler.expectMessage("No content at page " + page);
         repository.getCharacters(page);
@@ -63,10 +71,18 @@ public class StarWarsRepositoryTest {
     }
 
     @Test
-    public void When_getStarShips_invoked_With_invalid_param_Then_ApiException_thrown() throws ApiException {
+    public void When_getStarShips_invoked_With_invalid_page_index_Then_ApiException_thrown() throws ApiException {
         int page = -1;
+        expectedExceptionRuler.expect(IllegalArgumentException.class);
+        expectedExceptionRuler.expectMessage("Illegal page index " + page);
+        repository.getStarShips(page);
+    }
+
+    @Test
+    public void When_getStarShips_invoked_With_too_high_page_index_Then_ApiException_thrown() throws ApiException {
+        int page = 323321;
         expectedExceptionRuler.expect(NoContentException.class);
         expectedExceptionRuler.expectMessage("No content at page " + page);
-        repository.getStarShips(page);
+        repository.getCharacters(page);
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface StarWarsRepository {
 
-    List<StarWarsCharacter> getCharacters(int page) throws ApiException;
+    List<StarWarsCharacter> getCharacters(int page) throws IllegalArgumentException, ApiException;
 
-    List<StarShip> getStarShips(int page) throws ApiException;
+    List<StarShip> getStarShips(int page) throws IllegalArgumentException, ApiException;
 }
