@@ -23,8 +23,14 @@ android {
     }
 }
 
+ext {
+    supportSdkVersion = '24.2.0'
+}
+
 dependencies {
-    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile "com.android.support:appcompat-v7:${supportSdkVersion}"
+    compile "com.android.support:cardview-v7:${supportSdkVersion}"
+    compile "com.android.support:recyclerview-v7:${supportSdkVersion}"
 
     // dagger 2
     compile 'com.google.dagger:dagger:2.6.1'

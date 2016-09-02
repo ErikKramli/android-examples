@@ -25,23 +25,18 @@ public class MainPresenterImpl implements MainPresenter {
     @Override
     public void loadStarWarsCharacters(final Callback callback) {
         Observable
-                .fromCallable(new Callable<String>() {
+                .fromCallable(new Callable<List<StarWarsCharacter>>() {
                     @Override
-                    public String call() throws Exception {
-                        List<StarWarsCharacter> characters = interactor.getAllStarWarsCharacter();
-                        StringBuilder sb = new StringBuilder();
-                        for (StarWarsCharacter c : characters) {
-                            sb.append(c.getName()).append('\n');
-                        }
-                        return sb.toString();
+                    public List<StarWarsCharacter> call() throws Exception {
+                        return interactor.getAllStarWarsCharacter();
                     }
                 })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<String>() {
+                .subscribe(new Action1<List<StarWarsCharacter>>() {
                     @Override
-                    public void call(String s) {
-                        callback.onSuccess(s);
+                    public void call(List<StarWarsCharacter> characters) {
+                        callback.onSuccess(characters);
                     }
                 }, new Action1<Throwable>() {
                     @Override

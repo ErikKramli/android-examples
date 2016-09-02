@@ -7,6 +7,8 @@ import com.erikkramli.androidexamples.main.presenter.MainPresenter;
 import com.erikkramli.androidexamples.main.presenter.MainPresenterImpl;
 import com.erikkramli.androidexamples.main.ui.MainScreen;
 import com.erikkramli.androidexamples.main.ui.MainScreenImpl;
+import com.erikkramli.androidexamples.main.ui.render.CharacterRender;
+import com.erikkramli.androidexamples.main.ui.render.CharacterRenderImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -17,6 +19,12 @@ public final class MainModule {
     @Provides
     @ActivityScope
     MainScreen provideScreen(MainScreenImpl impl) {
+        return impl;
+    }
+
+    @Provides
+    @ActivityScope
+    CharacterRender provideCharacterRender(CharacterRenderImpl impl) {
         return impl;
     }
 

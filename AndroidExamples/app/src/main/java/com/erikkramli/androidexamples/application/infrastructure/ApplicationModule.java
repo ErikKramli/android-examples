@@ -2,6 +2,7 @@ package com.erikkramli.androidexamples.application.infrastructure;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 
 import com.erikkramli.androidexamples.application.ExampleApplication;
 
@@ -29,5 +30,11 @@ public class ApplicationModule {
     @Singleton
     Resources provideResources() {
         return application.getResources();
+    }
+
+    @Provides
+    @Singleton
+    LayoutInflater provideLayoutInflater() {
+        return (LayoutInflater) application.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 }
