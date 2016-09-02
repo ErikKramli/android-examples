@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:support="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="com.erikkramli.androidexamples.main.ui.CharacterItemBinding"></data>
@@ -8,7 +9,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_16">
+        support:contentPadding="@dimen/spacing_16">
 
         <TextView
             android:id="@+id/character_name_text"
