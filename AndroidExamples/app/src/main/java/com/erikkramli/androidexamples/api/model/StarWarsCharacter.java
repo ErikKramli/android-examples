@@ -1,13 +1,13 @@
 package com.erikkramli.androidexamples.api.model;
 
 import com.erikkramli.androidexamples.api.json.CharacterJson;
+import com.erikkramli.androidexamples.api.util.GenderMapper;
 import com.erikkramli.androidexamples.api.util.PageNumberParser;
 
 public final class StarWarsCharacter {
 
-    private static final String UNKNOWN = "n/a";
-
     private final String name;
+    @Gender
     private final String gender;
     private final String height;
     private final String skinColor;
@@ -16,7 +16,7 @@ public final class StarWarsCharacter {
 
     public StarWarsCharacter(CharacterJson json) {
         name = json.name;
-        gender = json.gender;
+        gender = GenderMapper.mapToAnnotation(json.gender);
         height = json.height;
         skinColor = json.skinColor;
         birthYear = json.birthYear;
@@ -31,6 +31,7 @@ public final class StarWarsCharacter {
         return name;
     }
 
+    @Gender
     public String getGender() {
         return gender;
     }
@@ -47,11 +48,7 @@ public final class StarWarsCharacter {
         return birthYear;
     }
 
-    private int[] getStarShipIds() {
+    public int[] getStarShipIds() {
         return starShipIds;
-    }
-
-    private boolean isDroid() {
-        return UNKNOWN.equalsIgnoreCase(gender);
     }
 }
