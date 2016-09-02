@@ -15,7 +15,8 @@ import dagger.Component;
         dependencies = ApiComponent.class,
         modules = {
                 ActivityModule.class,
-                MainModule.class
+                MainModule.class,
+                CharacterBindModule.class
         }
 )
 @ActivityScope
