@@ -34,7 +34,9 @@ public class MainScreenImpl implements MainScreen, MainPresenter.Callback {
         binding = DataBindingUtil.setContentView(activity, R.layout.activity_main);
 
         adapter = adapterProvider.get();
-        binding.list.addItemDecoration(new DividerItemDecoration());
+
+        int dividerHeight = activity.getResources().getDimensionPixelSize(R.dimen.spacing_8);
+        binding.list.addItemDecoration(new SpacingItemDecoration(dividerHeight));
         binding.list.setAdapter(adapter);
 
         ViewUtils.gone(binding.text, binding.list);

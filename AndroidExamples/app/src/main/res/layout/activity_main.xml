@@ -10,15 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
         tools:context=".main.MainActivity">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            support:layoutManager="LinearLayoutManager" />
+            support:layoutManager="LinearLayoutManager"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideOverlay" />
 
         <TextView
             android:id="@+id/text"
