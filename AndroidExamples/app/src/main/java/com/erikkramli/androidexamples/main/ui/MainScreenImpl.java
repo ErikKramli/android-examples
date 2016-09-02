@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.erikkramli.androidexamples.R;
 import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 import com.erikkramli.androidexamples.main.presenter.MainPresenter;
+import com.erikkramli.androidexamples.main.ui.recyclerview.CharactersAdapter;
+import com.erikkramli.androidexamples.main.ui.recyclerview.SpacingItemDecoration;
 import com.erikkramli.androidexamples.util.ViewUtils;
 
 import java.util.List;
@@ -38,7 +40,10 @@ public class MainScreenImpl implements MainScreen, MainPresenter.Callback {
         int dividerHeight = activity.getResources().getDimensionPixelSize(R.dimen.spacing_8);
         binding.list.addItemDecoration(new SpacingItemDecoration(dividerHeight));
         binding.list.setAdapter(adapter);
+    }
 
+    @Override
+    public void showContent() {
         ViewUtils.gone(binding.text, binding.list);
         ViewUtils.visible(binding.progress);
         presenter.loadStarWarsCharacters(this);

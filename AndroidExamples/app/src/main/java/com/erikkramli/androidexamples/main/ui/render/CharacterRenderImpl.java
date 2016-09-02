@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 
 import com.erikkramli.androidexamples.R;
 import com.erikkramli.androidexamples.main.ui.CharacterItemBinding;
-import com.erikkramli.androidexamples.main.ui.CharacterViewHolder;
+import com.erikkramli.androidexamples.main.ui.recyclerview.CharacterViewHolder;
 
 import javax.inject.Inject;
 
