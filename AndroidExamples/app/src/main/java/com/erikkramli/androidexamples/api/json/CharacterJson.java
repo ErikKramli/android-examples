@@ -2,61 +2,35 @@ package com.erikkramli.androidexamples.api.json;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Collections;
+import java.util.List;
+
 public final class CharacterJson {
 
     @SerializedName("name")
-    private String name;
+    public String name;
 
     @SerializedName("height")
-    private String height;
+    public String height;
 
     @SerializedName("mass")
-    private String mass;
+    public String mass;
 
     @SerializedName("hair_color")
-    private String hairColor;
+    public String hairColor;
 
     @SerializedName("skin_color")
-    private String skinColor;
+    public String skinColor;
 
     @SerializedName("eye_color")
-    private String eyeColor;
+    public String eyeColor;
 
     @SerializedName("birth_year")
-    private String birthYear;
+    public String birthYear;
 
     @SerializedName("gender")
-    private String gender;
+    public String gender;
 
-    public String getName() {
-        return name;
-    }
-
-    public String getHeight() {
-        return height;
-    }
-
-    public String getMass() {
-        return mass;
-    }
-
-    public String getHairColor() {
-        return hairColor;
-    }
-
-    public String getSkinColor() {
-        return skinColor;
-    }
-
-    public String getEyeColor() {
-        return eyeColor;
-    }
-
-    public String getBirthYear() {
-        return birthYear;
-    }
-
-    public String getGender() {
-        return gender;
-    }
+    @SerializedName("starships")
+    public List<String> starShipUrls = Collections.emptyList();
 }
