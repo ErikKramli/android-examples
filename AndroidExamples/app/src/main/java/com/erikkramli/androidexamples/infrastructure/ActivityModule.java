@@ -1,6 +1,9 @@
 package com.erikkramli.androidexamples.infrastructure;
 
+import android.databinding.DataBindingComponent;
 import android.support.v7.app.AppCompatActivity;
+
+import com.erikkramli.androidexamples.databinding.DataBindingComponentImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,5 +21,11 @@ public final class ActivityModule {
     @ActivityScope
     AppCompatActivity provideAppCompatActivity() {
         return activity;
+    }
+
+    @Provides
+    @ActivityScope
+    DataBindingComponent provideDataBindingComponent(DataBindingComponentImpl impl) {
+        return impl;
     }
 }

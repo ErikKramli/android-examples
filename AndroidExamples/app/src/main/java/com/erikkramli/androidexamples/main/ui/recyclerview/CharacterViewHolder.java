@@ -2,6 +2,7 @@ package com.erikkramli.androidexamples.main.ui.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 
+import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 import com.erikkramli.androidexamples.main.ui.CharacterItemBinding;
 
 public final class CharacterViewHolder extends RecyclerView.ViewHolder {
@@ -13,8 +14,8 @@ public final class CharacterViewHolder extends RecyclerView.ViewHolder {
         this.binding = binding;
     }
 
-    public void setName(String name) {
-        binding.characterNameText.setText(name);
+    public void setStarWarsCharacter(StarWarsCharacter character) {
+        binding.setCharacter(character);
     }
 
 }

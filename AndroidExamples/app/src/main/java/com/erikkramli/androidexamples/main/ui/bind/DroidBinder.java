@@ -13,6 +13,6 @@ public class DroidBinder implements CharacterBinder {
 
     @Override
     public void bindCharacter(CharacterViewHolder holder, StarWarsCharacter character) {
-        holder.setName(character.getName() + " DROID");
+        holder.setStarWarsCharacter(character);
     }
 }

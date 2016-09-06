@@ -13,6 +13,6 @@ public class HermaphroditeBinder implements CharacterBinder {
 
     @Override
     public void bindCharacter(CharacterViewHolder holder, StarWarsCharacter character) {
-        holder.setName(character.getName() + " " + character.getGender());
+        holder.setStarWarsCharacter(character);
     }
 }

@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:support="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="com.erikkramli.androidexamples.main.ui.CharacterItemBinding"></data>
+    <data class="com.erikkramli.androidexamples.main.ui.CharacterItemBinding">
+
+        <variable
+            name="character"
+            type="com.erikkramli.androidexamples.api.model.StarWarsCharacter" />
+    </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         support:contentPadding="@dimen/spacing_16">
 
         <TextView
-            android:id="@+id/character_name_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Darth Vader"/>
+            android:layout_gravity="top|start"
+            android:textSize="@dimen/font_size_large"
+            android:textStyle="bold"
+            android:text="@{character.name}"
+            tools:text="name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:textSize="@dimen/font_size_normal"
+            android:text="@{character.birthYear}"
+            tools:text="birth year" />
+
+        <TextView
+            android:id="@+id/character_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:textSize="@dimen/font_size_normal"
+            binding:gender="@{character.gender}"
+            tools:text="gender" />
 
     </android.support.v7.widget.CardView>
 </layout>

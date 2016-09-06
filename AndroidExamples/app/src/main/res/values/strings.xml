@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AndroidExamples</string>
+
+    <string name="droid">DROID</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="hermaphrodite">hermaphrodite</string>
 </resources>
