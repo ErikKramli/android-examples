@@ -1,5 +1,6 @@
 package com.erikkramli.androidexamples.main.ui.bind;
 
+import com.erikkramli.androidexamples.R;
 import com.erikkramli.androidexamples.api.model.StarWarsCharacter;
 import com.erikkramli.androidexamples.main.ui.recyclerview.CharacterViewHolder;
 
@@ -14,5 +15,7 @@ public class FemaleBinder implements CharacterBinder {
     @Override
     public void bindCharacter(CharacterViewHolder holder, StarWarsCharacter character) {
         holder.setStarWarsCharacter(character);
+        holder.showGender();
+        holder.setBackgroundColor(R.color.blue);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:support="http://schemas.android.com/apk/res-auto"
     xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:support="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="com.erikkramli.androidexamples.main.ui.CharacterItemBinding">
@@ -9,32 +9,37 @@
         <variable
             name="character"
             type="com.erikkramli.androidexamples.api.model.StarWarsCharacter" />
+
+        <variable
+            name="bgColorRes"
+            type="int" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        binding:bgColor="@{bgColorRes}"
         support:contentPadding="@dimen/spacing_16">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|start"
+            android:text="@{character.name}"
             android:textSize="@dimen/font_size_large"
             android:textStyle="bold"
-            android:text="@{character.name}"
             tools:text="name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
-            android:textSize="@dimen/font_size_normal"
             android:text="@{character.birthYear}"
+            android:textSize="@dimen/font_size_normal"
             tools:text="birth year" />
 
         <TextView
-            android:id="@+id/character_name_text"
+            android:id="@+id/gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"

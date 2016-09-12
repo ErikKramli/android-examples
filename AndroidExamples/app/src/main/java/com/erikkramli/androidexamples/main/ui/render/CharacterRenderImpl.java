@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public final class CharacterRenderImpl implements CharacterRender {
 
     private final LayoutInflater inflater;
-    private final android.databinding.DataBindingComponent bindingComponent;
+    private final DataBindingComponent bindingComponent;
 
     @Inject
     public CharacterRenderImpl(LayoutInflater inflater, DataBindingComponent bindingComponent) {

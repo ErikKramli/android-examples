@@ -2,7 +2,8 @@ package com.erikkramli.androidexamples.databinding;
 
 import android.content.res.Resources;
 import android.databinding.BindingAdapter;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,5 +36,18 @@ public final class DataBindingAdapter {
             default:
                 view.setText(gender);
         }
+    }
+
+    @BindingAdapter({"binding:bgColor"})
+    public void setBackgroundColor(View view, int colorRes) {
+        @ColorInt int color = resources.getColor(colorRes);
+
+        int alpha = 100;
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+
+        color = Color.argb(alpha, red, green, blue);
+        view.setBackgroundColor(color);
     }
 }
