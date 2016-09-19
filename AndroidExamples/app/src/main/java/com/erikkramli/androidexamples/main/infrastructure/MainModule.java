@@ -10,33 +10,25 @@ import com.erikkramli.androidexamples.main.ui.MainScreenImpl;
 import com.erikkramli.androidexamples.main.ui.render.CharacterRender;
 import com.erikkramli.androidexamples.main.ui.render.CharacterRenderImpl;
 
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 
 @Module
-public final class MainModule {
+public abstract class MainModule {
 
-    @Provides
+    @Binds
     @ActivityScope
-    MainScreen provideScreen(MainScreenImpl impl) {
-        return impl;
-    }
+    abstract MainScreen provideScreen(MainScreenImpl impl);
 
-    @Provides
+    @Binds
     @ActivityScope
-    CharacterRender provideCharacterRender(CharacterRenderImpl impl) {
-        return impl;
-    }
+    abstract CharacterRender provideCharacterRender(CharacterRenderImpl impl);
 
-    @Provides
+    @Binds
     @ActivityScope
-    MainPresenter providePresenter(MainPresenterImpl impl) {
-        return impl;
-    }
+    abstract MainPresenter providePresenter(MainPresenterImpl impl);
 
-    @Provides
+    @Binds
     @ActivityScope
-    AllCharacterInteractor provideInteractor(AllCharacterInteractorImpl impl) {
-        return impl;
-    }
+    abstract AllCharacterInteractor provideInteractor(AllCharacterInteractorImpl impl);
 }
