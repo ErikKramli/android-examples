@@ -30,7 +30,7 @@ public class RotationPresenter {
 
     public void setCallbacks(Callbacks callbacks) {
         this.callbacks = callbacks;
-        if (state != -1) {
+        if (state != -1 && callbacks != null) {
             callbacks.onLoad(String.valueOf(state));
         }
     }
@@ -42,7 +42,7 @@ public class RotationPresenter {
             }
 
             subscription = Observable
-                    .interval(5, TimeUnit.SECONDS)
+                    .interval(2, TimeUnit.SECONDS)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<Long>() {
