@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|start"
             android:text="@{character.name}"
+            android:textColor="@color/gray"
             android:textSize="@dimen/font_size_large"
             android:textStyle="bold"
             tools:text="name" />
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|end"
             android:text="@{character.birthYear}"
+            android:textColor="@color/gray"
             android:textSize="@dimen/font_size_normal"
             tools:text="birth year" />
 
@@ -43,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
+            android:textColor="@color/gray"
             android:textSize="@dimen/font_size_normal"
             binding:gender="@{character.gender}"
             tools:text="gender" />

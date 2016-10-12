@@ -16,6 +16,6 @@ public class DroidBinder implements CharacterBinder {
     public void bindCharacter(CharacterViewHolder holder, StarWarsCharacter character) {
         holder.setStarWarsCharacter(character);
         holder.hideGender();
-        holder.setBackgroundColor(R.color.gray);
+        holder.setBackgroundColor(R.color.red);
     }
 }

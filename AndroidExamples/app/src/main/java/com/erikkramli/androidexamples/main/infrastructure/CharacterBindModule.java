@@ -8,43 +8,31 @@ import com.erikkramli.androidexamples.main.ui.bind.FemaleBinder;
 import com.erikkramli.androidexamples.main.ui.bind.HermaphroditeBinder;
 import com.erikkramli.androidexamples.main.ui.bind.MaleBinder;
 
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
 
 @Module
-public class CharacterBindModule {
+public abstract class CharacterBindModule {
 
-    @Provides
+    @Binds
     @ActivityScope
-    @IntoMap
-    @StringKey(Gender.DROID)
-    CharacterBinder provideDroidBinder(DroidBinder binder) {
-        return binder;
-    }
+    @IntoMap @StringKey(Gender.DROID)
+    abstract CharacterBinder provideDroidBinder(DroidBinder binder);
 
-    @Provides
+    @Binds
     @ActivityScope
-    @IntoMap
-    @StringKey(Gender.MALE)
-    CharacterBinder provideMaleBinder(MaleBinder binder) {
-        return binder;
-    }
+    @IntoMap @StringKey(Gender.MALE)
+    abstract CharacterBinder provideMaleBinder(MaleBinder binder);
 
-    @Provides
+    @Binds
     @ActivityScope
-    @IntoMap
-    @StringKey(Gender.FEMALE)
-    CharacterBinder provideFemaleBinder(FemaleBinder binder) {
-        return binder;
-    }
+    @IntoMap @StringKey(Gender.FEMALE)
+    abstract CharacterBinder provideFemaleBinder(FemaleBinder binder);
 
-    @Provides
+    @Binds
     @ActivityScope
-    @IntoMap
-    @StringKey(Gender.HERMAPHRODITE)
-    CharacterBinder provideHermaphroditeBinder(HermaphroditeBinder binder) {
-        return binder;
-    }
+    @IntoMap @StringKey(Gender.HERMAPHRODITE)
+    abstract CharacterBinder provideHermaphroditeBinder(HermaphroditeBinder binder);
 }
