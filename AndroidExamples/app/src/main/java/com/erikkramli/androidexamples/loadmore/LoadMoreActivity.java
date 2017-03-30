@@ -41,18 +41,15 @@ public class LoadMoreActivity extends AppCompatActivity {
         footerBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.list_footer_load_more, null, false);
 
         adapter = new LoadMoreAdapter();
-        binding.loadMoreList.addFooterView(footerBinding.getRoot());
         binding.loadMoreList.setOnScrollListener(new LoadMoreListener(loadMoreCallback));
         binding.loadMoreList.setAdapter(adapter);
-
-        ViewUtils.gone(footerBinding.loadMoreContainer);
     }
 
     LoadMoreListener.Callback loadMoreCallback = new LoadMoreListener.Callback() {
         @Override
         public void onMoreItemRequested() {
             if (loadMoreSubscription == null) {
-                ViewUtils.visible(footerBinding.loadMoreContainer);
+                binding.loadMoreList.addFooterView(footerBinding.getRoot());
                 Log.d(":::", "load more triggered");
                 loadMore(adapter.getCount(), 20);
             }
