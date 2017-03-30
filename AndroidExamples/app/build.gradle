@@ -1,20 +1,19 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId "com.erikkramli.androidexamples"
         minSdkVersion 19
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
-    dataBinding {
-        enabled true
-    }
+
+    dataBinding.enabled true
+
     buildTypes {
         release {
             minifyEnabled true
@@ -24,17 +23,18 @@ android {
 }
 
 ext {
-    supportSdkVersion = '24.2.0'
+    supportSdkVersion = '25.3.1'
+    daggerVersion = '2.10'
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${supportSdkVersion}"
-    compile "com.android.support:cardview-v7:${supportSdkVersion}"
-    compile "com.android.support:recyclerview-v7:${supportSdkVersion}"
+    compile "com.android.support:appcompat-v7:$supportSdkVersion"
+    compile "com.android.support:cardview-v7:$supportSdkVersion"
+    compile "com.android.support:recyclerview-v7:$supportSdkVersion"
 
     // dagger 2
-    compile 'com.google.dagger:dagger:2.6.1'
-    apt 'com.google.dagger:dagger-compiler:2.6.1'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     // rxjava
     compile 'io.reactivex:rxjava:1.1.9'
