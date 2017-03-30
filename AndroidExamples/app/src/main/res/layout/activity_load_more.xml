@@ -9,6 +9,7 @@
 
         <ListView
             android:id="@+id/load_more_list"
+            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/blue"
